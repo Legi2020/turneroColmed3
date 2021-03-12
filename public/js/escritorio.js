@@ -8,7 +8,7 @@ const labelNoTickets = document.querySelector('.alert-info');
 
 const searchParams = new URLSearchParams(window.location.search);
 if (!searchParams.has('escritorio')) {
-    throw new Error('El escritorio es obligatorio');
+    throw new Error('El BOX es obligatorio');
 }
 
 const escritorio = searchParams.get('escritorio');
@@ -47,7 +47,7 @@ btnSiguiente.addEventListener('click', () => {
             lblTicket.innerText = 'Nadie';
             return divAlerta.style.display = '';
         }
-        lblTicket.innerText = `Ticket ${ticket.numero}`;
+        lblTicket.innerText = `Turno: ${ticket.numero}`;
     });
 
 });
