@@ -17,6 +17,7 @@ class TicketControl {
         this.hoy = new Date().getDate();
         this.tickets = [];
         this.ultimos4 = [];
+        //this.totalHistorico = [];
         this.init();
     }
 
@@ -25,16 +26,18 @@ class TicketControl {
             ultimo: this.ultimo,
             hoy: this.hoy,
             tickets: this.tickets,
-            ultimos4: this.ultimos4
+            ultimos4: this.ultimos4,
+            //totalHistorico: this.totalHistorico
         }
     }
 
     init() {
-        const { hoy, tickets, ultimo, ultimos4 } = require('../db/data.json');
+        const { hoy, tickets, ultimo, ultimos4, /*totalHistorico*/ } = require('../db/data.json');
         if (hoy === this.hoy) {
             this.tickets = tickets;
             this.ultimo = ultimo;
             this.ultimos4 = ultimos4;
+            //this.totalHistorico = totalHistorico;
         } else {
             this.guardarDB();
         }
@@ -46,11 +49,12 @@ class TicketControl {
         );
 
         fs.writeFileSync(dbPath, JSON.stringify(this.toJson));
+        this.backupDB(); //Agregue la funcion para que lo haga automatico.
     }
 
     siguiente() {
-        this.ultimo += 1;
-        const ticket = new Ticket(this.ultimo, null);
+        this.ultimo += 1; 
+        const ticket = new Ticket(this.ultimo, 'Ver aca para el DNI', null); //Ver aca para Matricula/DNI
         this.tickets.push(ticket);
         this.guardarDB();
         return `Ticket ${ticket.numero} - DNI/MATRICULA: ${ticket.datos}`;
@@ -60,6 +64,7 @@ class TicketControl {
         if (this.tickets.length === 0) return null;
         const ticket = this.tickets.shift();
         ticket.escritorio = escritorio;
+        //this.totalHistorico.push(ticket); Ver aca tira error
         this.ultimos4.unshift(ticket);
         if (this.ultimos4.length > 4) {
             this.ultimos4.splice(-1, 1);
@@ -70,7 +75,20 @@ class TicketControl {
 
     //nueva funcion al txt
     backupDB() {
-
+        const data = {
+            ultimo: this.ultimo,
+            hoy: this.hoy,
+            tickets: this.tickets,
+            ultimos4: this.ultimos4,
+            //totalHistorico: this.totalHistorico
+          };
+      
+        let jsonData = JSON.stringify(data);
+        fs.writeFile("./db/log.txt", jsonData, function(err) {
+            if (err) {
+                console.log(err);
+            }
+        });
     }
 
     //borrado y reemplazo para empezar de 0
