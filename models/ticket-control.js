@@ -44,6 +44,7 @@ class TicketControl {
         const dbPath = path.join(
             __dirname, '../db/data.json'
         );
+
         fs.writeFileSync(dbPath, JSON.stringify(this.toJson));
     }
 
@@ -68,23 +69,17 @@ class TicketControl {
     }
 
     //nueva funcion al txt
-    backupDB(){
+    backupDB() {
 
     }
 
     //borrado y reemplazo para empezar de 0
-    nuevoDia(){
-        let data = {
-            ultimo: 0,
-            hoy: 0,
-            tickets: [],
-            ultimos4: []
-          };
-    
-        const ubicacion = path.dirname('../db/data.json')
-        fs.writeFileSync(ubicacion, JSON.stringify(data));
-
-    }
+    nuevoDia() {
+        this.ultimo = 0;
+        this.tickets = [];
+        this.ultimos4 = [];
+        this.guardarDB();
+    };
 }
 
 module.exports = TicketControl;

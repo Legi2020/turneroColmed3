@@ -15,6 +15,8 @@ const socketController = (socket) => {
         callback(siguiente);
     });
 
+    socket.on('nuevo-dia', () => ticketControl.nuevoDia());
+
     socket.on('atender-ticket', ({ escritorio }, callback) => {
         if (!escritorio) return callback({ ok: false, msg: 'El escritorio es obligatorio' });
         const ticket = ticketControl.atenderTicket(escritorio);
