@@ -66,6 +66,25 @@ class TicketControl {
         this.guardarDB();
         return ticket;
     }
+
+    //nueva funcion al txt
+    backupDB(){
+
+    }
+
+    //borrado y reemplazo para empezar de 0
+    nuevoDia(){
+        let data = {
+            ultimo: 0,
+            hoy: 0,
+            tickets: [],
+            ultimos4: []
+          };
+    
+        const ubicacion = path.dirname('../db/data.json')
+        fs.writeFileSync(ubicacion, JSON.stringify(data));
+
+    }
 }
 
 module.exports = TicketControl;
