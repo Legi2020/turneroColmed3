@@ -27,23 +27,23 @@ socket.on('estado-actual', payload => {
     if (ticket1) {
         lblTicket1.innerText = `Turno: ${ticket1.numero}`;
         lblDatos1.innerText = `Matricula/DNI: ${ticket1.datos}`;
-        lblEscritorio1.innerText = `Box: ${ticket1.escritorio}`;
+        lblEscritorio1.innerText = `BOX: ${ticket1.escritorio}`;
     }
 
     if (ticket2) {
         lblTicket2.innerText = `Turno: ${ticket2.numero}`;
-        lblEscritorio2.innerText = `Box: ${ticket2.escritorio}`;
+        lblEscritorio2.innerText = `BOX: ${ticket2.escritorio}`;
 
     }
 
     if (ticket3) {
         lblTicket3.innerText = `Turno: ${ticket3.numero}`;
-        lblEscritorio3.innerText = `Box: ${ticket3.escritorio}`;
+        lblEscritorio3.innerText = `BOX: ${ticket3.escritorio}`;
     }
 
     if (ticket4) {
         lblTicket4.innerText = `Turno: ${ticket4.numero}`;
-        lblEscritorio4.innerText = `Box: ${ticket4.escritorio}`;
+        lblEscritorio4.innerText = `BOX: ${ticket4.escritorio}`;
 
     }
 

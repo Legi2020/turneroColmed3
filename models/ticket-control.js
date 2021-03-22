@@ -54,7 +54,7 @@ class TicketControl {
 
     siguiente() {
         this.ultimo += 1; 
-        const ticket = new Ticket(this.ultimo, 'Ver aca para el DNI', null); //Ver aca para Matricula/DNI
+        const ticket = new Ticket(this.ultimo, null, null); //Ver aca para Matricula/DNI
         this.tickets.push(ticket);
         this.guardarDB();
         return `Ticket ${ticket.numero} - DNI/MATRICULA: ${ticket.datos}`;

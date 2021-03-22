@@ -1,6 +1,7 @@
 // Referencias del HTML
 const lblNuevoTicket = document.querySelector('#lblNuevoTicket');
 const btnCrear = document.querySelector('button');
+const nuevoDato = document.querySelector('#lblNuevoDato');
 
 const socket = io();
 

@@ -2,8 +2,8 @@ html,
 body {
     height: 100%;
     width: 100%;
-    background-color: #6951F0;
-    color: white;
+    background-color: #c5c5c5cb;
+    color: rgb(20, 20, 20);
 }
 
 table {
@@ -13,24 +13,42 @@ table {
 }
 
 .ticket-actual {
-    background-color: #282828;
+    background-color: #e0e0e0;
 }
 
 .ticket-actual-numero {
-    font-size: 80px;
+    font-family: Copperplate,fantasy;
+    font-size: 90px;
+}
+
+.ticket-actual-datos {
+    font-family: Copperplate,fantasy;
+    font-size: 30px;
 }
 
 .ticket-actual-escritorio {
-    font-size: 45px;
+    font-family: Copperplate,fantasy;
+    font-size: 80px;
 }
 
 .ticket-secundario {
-    font-size: 25px;
+    font-family: Copperplate,fantasy;
+    font-size: 40px;
 }
 
+.ticket-secundario-escritorio {
+    font-family: Copperplate,fantasy;
+    font-size: 30px;
+}
 
 /* Nuevo-ticket */
 
 #lblNuevoTicket {
+    font-family: Copperplate,fantasy;
     font-size: 70px;
+}
+
+#lblNuevoDato {
+    margin: 0 auto;
+    float: none;
 }
