@@ -17,7 +17,7 @@ class TicketControl {
         this.hoy = new Date().getDate();
         this.tickets = [];
         this.ultimos4 = [];
-        //this.totalHistorico = [];
+        this.totalHistorico = [];
         this.init();
     }
 
@@ -27,17 +27,17 @@ class TicketControl {
             hoy: this.hoy,
             tickets: this.tickets,
             ultimos4: this.ultimos4,
-            //totalHistorico: this.totalHistorico
+            totalHistorico: this.totalHistorico
         }
     }
 
     init() {
-        const { hoy, tickets, ultimo, ultimos4, /*totalHistorico*/ } = require('../db/data.json');
+        const { hoy, tickets, ultimo, ultimos4, totalHistorico } = require('../db/data.json');
         if (hoy === this.hoy) {
             this.tickets = tickets;
             this.ultimo = ultimo;
             this.ultimos4 = ultimos4;
-            //this.totalHistorico = totalHistorico;
+            this.totalHistorico = totalHistorico;
         } else {
             this.guardarDB();
         }
@@ -49,11 +49,10 @@ class TicketControl {
         );
 
         fs.writeFileSync(dbPath, JSON.stringify(this.toJson));
-        this.backupDB(); //Agregue la funcion para que lo haga automatico.
     }
 
     siguiente() {
-        this.ultimo += 1; 
+        this.ultimo += 1;
         const ticket = new Ticket(this.ultimo, null, null); //Ver aca para Matricula/DNI
         this.tickets.push(ticket);
         this.guardarDB();
@@ -64,8 +63,8 @@ class TicketControl {
         if (this.tickets.length === 0) return null;
         const ticket = this.tickets.shift();
         ticket.escritorio = escritorio;
-        //this.totalHistorico.push(ticket); Ver aca tira error
         this.ultimos4.unshift(ticket);
+        this.totalHistorico.push(ticket);
         if (this.ultimos4.length > 4) {
             this.ultimos4.splice(-1, 1);
         }
@@ -80,11 +79,11 @@ class TicketControl {
             hoy: this.hoy,
             tickets: this.tickets,
             ultimos4: this.ultimos4,
-            //totalHistorico: this.totalHistorico
-          };
-      
+            totalHistorico: this.totalHistorico
+        };
+
         let jsonData = JSON.stringify(data);
-        fs.writeFile("./db/log.txt", jsonData, function(err) {
+        fs.writeFile(`./db/log-${Date.now()}.txt`, jsonData, function(err) {
             if (err) {
                 console.log(err);
             }
@@ -93,9 +92,11 @@ class TicketControl {
 
     //borrado y reemplazo para empezar de 0
     nuevoDia() {
+        this.backupDB();
         this.ultimo = 0;
         this.tickets = [];
         this.ultimos4 = [];
+        this.totalHistorico = [];
         this.guardarDB();
     };
 }

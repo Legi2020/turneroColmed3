@@ -1,0 +1,1 @@
+{"ultimo":5,"hoy":22,"tickets":[{"numero":3,"datos":null,"escritorio":null},{"numero":4,"datos":null,"escritorio":null},{"numero":5,"datos":null,"escritorio":null}],"ultimos4":[{"numero":2,"datos":null,"escritorio":"1"},{"numero":1,"datos":null,"escritorio":"1"}],"totalHistorico":[{"numero":1,"datos":null,"escritorio":"1"},{"numero":2,"datos":null,"escritorio":"1"}]}
