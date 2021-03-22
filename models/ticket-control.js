@@ -14,7 +14,7 @@ class TicketControl {
 
     constructor() {
         this.ultimo = 0;
-        this.hoy = new Date().getDate();
+        this.hoy = new Date().toLocaleString();
         this.tickets = [];
         this.ultimos4 = [];
         this.totalHistorico = [];
@@ -75,10 +75,8 @@ class TicketControl {
     //nueva funcion al txt
     backupDB() {
         const data = {
-            ultimo: this.ultimo,
             hoy: this.hoy,
-            tickets: this.tickets,
-            ultimos4: this.ultimos4,
+            totalAtendidos: this.totalHistorico.length,
             totalHistorico: this.totalHistorico
         };
 
