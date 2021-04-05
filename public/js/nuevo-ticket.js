@@ -18,11 +18,13 @@ socket.on('ultimo-ticket', ultimo => {
 });
 
 btnCrear.addEventListener('click', () => {
-    console.log(nuevoDato.value);
-    console.log('pase')
-    socket.emit('siguiente-ticket', (nuevoDato.value), (ticket) => {
-        lblNuevoTicket.innerText = ticket;
-        nuevoDato.value = ticket;
-    });
+    if(nuevoDato.value == "" /*|| nuevoDato.value.length < 2*/) { //Consultar en futuro por un minimo de caracteres.
+        alert('No puede estar el campo vacio');
+    }else {
+        socket.emit('siguiente-ticket', (nuevoDato.value), (ticket) => {
+            lblNuevoTicket.innerText = ticket;
+            nuevoDato.value = ticket;
+        }); 
+    }
 
 });

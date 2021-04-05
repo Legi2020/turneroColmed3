@@ -18,22 +18,22 @@ table {
 
 .ticket-actual-numero {
     font-family: Copperplate,fantasy;
-    font-size: 90px;
+    font-size: 100px;
 }
 
 .ticket-actual-datos {
     font-family: Copperplate,fantasy;
-    font-size: 30px;
+    font-size: 70px;
 }
 
 .ticket-actual-escritorio {
     font-family: Copperplate,fantasy;
-    font-size: 80px;
+    font-size: 100px;
 }
 
 .ticket-secundario {
     font-family: Copperplate,fantasy;
-    font-size: 40px;
+    font-size: 30px;
 }
 
 .ticket-secundario-escritorio {
@@ -45,7 +45,7 @@ table {
 
 #lblNuevoTicket {
     font-family: Copperplate,fantasy;
-    font-size: 70px;
+    font-size: 65px;
 }
 
 #lblNuevoDato {
