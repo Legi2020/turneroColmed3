@@ -1,1 +1,0 @@
-{"hoy":"2021-03-22T18:36:12.450Z","totalAtendidos":3,"totalHistorico":[{"numero":1,"datos":null,"escritorio":"1"},{"numero":2,"datos":null,"escritorio":"1"},{"numero":3,"datos":null,"escritorio":"1"}]}
