@@ -2,9 +2,9 @@ const path = require('path');
 const fs = require('fs');
 
 class Ticket {
-    constructor(numero, datos, escritorio) {
+    constructor(numero, matricula, escritorio) {
         this.numero = numero;
-        this.datos = datos; //esto sería DNI o Matricula
+        this.matricula = matricula; //esto sería DNI o Matricula
         this.escritorio = escritorio;
     }
 }
@@ -51,12 +51,12 @@ class TicketControl {
         fs.writeFileSync(dbPath, JSON.stringify(this.toJson));
     }
 
-    siguiente() {
+    siguiente(matricula) {
         this.ultimo += 1;
-        const ticket = new Ticket(this.ultimo, null, null); //Ver aca para Matricula/DNI
+        const ticket = new Ticket(this.ultimo, matricula); //Ver aca para Matricula/DNI
         this.tickets.push(ticket);
         this.guardarDB();
-        return `Ticket ${ticket.numero} - DNI/MATRICULA: ${ticket.datos}`;
+        return `Ticket ${ticket.numero} - DNI/MATRICULA: ${ticket.matricula}`;
     }
 
     atenderTicket(escritorio) {

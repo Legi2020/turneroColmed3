@@ -7,8 +7,6 @@ const socket = io();
 
 socket.on('connect', () => {
     btnCrear.disabled = false;
-
-
 });
 
 socket.on('disconnect', () => {
@@ -21,7 +19,8 @@ socket.on('ultimo-ticket', ultimo => {
 
 btnCrear.addEventListener('click', () => {
     console.log(nuevoDato.value);
-    socket.emit('siguiente-ticket', null, (ticket) => {
+    console.log('pase')
+    socket.emit('siguiente-ticket', (nuevoDato.value), (ticket) => {
         lblNuevoTicket.innerText = ticket;
         nuevoDato.value = ticket;
     });

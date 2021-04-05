@@ -10,7 +10,7 @@ const socketController = (socket) => {
     socket.emit('tickets-pendientes', ticketControl.tickets.length);
 
     socket.on('siguiente-ticket', (payload, callback) => {
-        const siguiente = ticketControl.siguiente();
+        const siguiente = ticketControl.siguiente(payload);
         socket.broadcast.emit('tickets-pendientes', ticketControl.tickets.length);
         callback(siguiente);
     });
