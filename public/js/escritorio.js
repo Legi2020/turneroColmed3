@@ -12,7 +12,7 @@ if (!searchParams.has('escritorio')) {
 }
 
 const escritorio = searchParams.get('escritorio');
-lblEscritorio.innerText = escritorio;
+lblEscritorio.innerText = `Utilizando el BOX: ${escritorio}`;
 
 divAlerta.style.display = 'none';
 
@@ -47,7 +47,7 @@ btnSiguiente.addEventListener('click', () => {
             lblTicket.innerText = 'Nadie';
             return divAlerta.style.display = '';
         }
-        lblTicket.innerText = `Turno: ${ticket.numero}`;
+        lblTicket.innerText = `Turno: ${ticket.numero} con DNI/Matricula: ${ticket.matricula}` ;
     });
 
 });
