@@ -47,7 +47,7 @@ btnSiguiente.addEventListener('click', () => {
             lblTicket.innerText = 'Nadie';
             return divAlerta.style.display = '';
         }
-        lblTicket.innerText = `Turno: ${ticket.numero} con DNI/Matricula: ${ticket.matricula}` ;
+        lblTicket.innerText = `Turno: ${ticket.numero} con DNI-Matricula: ${ticket.matricula}` ;
     });
 
 });
