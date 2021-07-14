@@ -2,7 +2,7 @@ html,
 body {
     height: 100%;
     width: 100%;
-    background-color: #c5c5c5cb;
+    background-color: #a0a0a0cb;
     color: rgb(20, 20, 20);
 }
 
@@ -51,4 +51,12 @@ table {
 #lblNuevoDato {
     margin: 0 auto;
     float: none;
+}
+
+.contenido {
+    max-width: 1200px;
+    margin: 5rem auto 0 auto;
+    color: white;
+    font-size: 3rem;
+    font-family: 'Carrois Gothic SC', sans-serif;
 }

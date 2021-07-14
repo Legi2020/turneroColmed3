@@ -88,12 +88,19 @@ class TicketControl {
         };
 
         let jsonData = JSON.stringify(data);
-        fs.writeFile(`./db/log-${Date.now()}.txt`, jsonData, function(err) {
+        //Backup en TXT
+        fs.writeFile(`./db/logs/log-${Date.now()}.txt`, jsonData, function(err) {
             if (err) {
                 console.log(err);
             }
         });
-    }
+        //Backup en Json
+        fs.writeFile(`./db/backups/log-${Date.now()}.json`, jsonData, function(err) {
+            if (err) {
+                console.log(err);
+            }
+        });
+    };
 
     //borrado y reemplazo para empezar de 0
     nuevoDia() {

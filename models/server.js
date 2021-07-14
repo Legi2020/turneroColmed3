@@ -31,6 +31,9 @@ class Server {
         // Directorio Público
         this.app.use( express.static('public') );
 
+        //Acceso al Backup
+        this.app.use(express.static('db'));
+
     }
 
     routes() {
