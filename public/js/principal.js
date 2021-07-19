@@ -4,4 +4,8 @@ const socket = io();
 
 botonNuevoDia.addEventListener('click', () => {
     socket.emit('nuevo-dia');
+    setTimeout(function(){
+        window.location.reload();
+    },1000);
+
 });

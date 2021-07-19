@@ -30,13 +30,20 @@ socket.on('disconnect', () => {
 
 
 socket.on('tickets-pendientes', (pendientes) => {
+    const audio = new Audio('./audio/alert2.mp3');
     if (pendientes === 0) {
         labelNoTickets.style.display = '';
         lblPendientes.style.display = 'none';
     } else {
+        audio.play();
+        window.alert('Hay una persona en espera');
+        setTimeout(function(){
+            audio.play();
+        },2000);
         labelNoTickets.style.display = 'none';
         lblPendientes.style.display = '';
         lblPendientes.innerText = pendientes;
+        audio.play();
     }
     lblPendientes.innerText = pendientes;
 })
