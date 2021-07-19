@@ -6,12 +6,14 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>INFORMES</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <link href="https://cdn.jsdelivr.net/npm/gridjs/dist/theme/mermaid.min.css" rel="stylesheet" />
+        <link rel="stylesheet" href="./css/style2.css">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     </head>
     <body>
         <div class="container">
             <nav class="navbar fixed-top navbar-light bg-light">
                 <img src="./img/distrito3chico.png" class="rounded float-left" alt="logo">
+                <a class="btn btn-outline-primary" href="/index.html" role="button">Volver al Inicio</a>
             </nav>
         </div>
         <br>
@@ -19,21 +21,61 @@
         <br>
         <br>
         <br>
-        <div class="container">
-            <table class="table table-striped">
-                <tr  class="bg-info">
-                    <th>Ultimo</th>
-                    <th>Fecha</th>
-                    <th>Tickets</th>
-                    <th>TotalHistorico</th>
-                </tr>
-            
-                <tbody id="myTable"></tbody>
-
+        <div class="container mt-4 shadow-lg p3 mb-5 bg-body rounded">
+            <h3>Informes:</h3>
+            <table id="dataTable" class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <td>Fecha</td>
+                        <td>Ticket Nro.</td>
+                        <td>Matricula/DNI</td>
+                        <td>BOX</td>
+                        <td>Horario Entrada</td>
+                        <td>Horario Salida</td>
+                    </tr>
+                </thead>
+                <tbody id="data">
+                </tbody>
+    
             </table>
+
+            <div style="text-align: center;">
+                <button id="btnExportToCsv" type="button" class="btn btn-secondary">Guardar y Exportar</button>
+                <br>
+                <br>
+                <div class="w3-container w3-auto">
+                <div class="w3-panel w3-pale-yellow w3-border">
+                    <p>Atención: Apretar el botón de nuevo día provocará que el sistema reinicie. Asegurese de haber exportado previamente.</p>
+                  </div>
+                </div>
+                <a class="btn btn-danger" id='btn-nuevoDia' href="#">NUEVO DIA Y GUARDAR</a>
+                <br>
+            </div>
         </div>
+
     </body>
+    <script>
+        const dataTable = document.getElementById("dataTable");
+        const btnExportToCsv = document.getElementById("btnExportToCsv");
+
+        btnExportToCsv.addEventListener("click", () => {
+            const exporter = new TableCSVExporter(dataTable);
+            const csvOutput = exporter.convertirCSV();
+            const csvBlob = new Blob([csvOutput], { type: "text/csv" });
+            const blobUrl = URL.createObjectURL(csvBlob);
+            const anchorElement = document.createElement("a");
+
+            anchorElement.href = blobUrl;
+            anchorElement.download = `${new Date().toLocaleDateString()}.csv`;
+            anchorElement.click();
+
+            setTimeout(() => {
+                URL.revokeObjectURL(blobUrl);
+            }, 500);
+        });
+    </script>
 
     <script src="js/informes.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="./socket.io/socket.io.js"></script>
+    <script src="js/principal.js"></script>
 </html>
