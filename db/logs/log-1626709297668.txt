@@ -1,1 +1,0 @@
-{"hoy":"7/19/2021","totalAtendidos":2,"totalHistorico":[{"numero":1,"horario":"12:40:54","matricula":"123123","escritorio":"1","horario2":"12:40:59"},{"numero":2,"horario":"12:40:56","matricula":"123123","escritorio":"1","horario2":"12:41:00"}]}
