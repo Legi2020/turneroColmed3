@@ -27,6 +27,10 @@ const socketController = (socket) => {
         return callback({ ok: true, ticket });
     });
 
+    /*socket.on('finalizar-Box', function() {
+        ticketControl.finalizarBox();
+    })*/
+
 }
 
 

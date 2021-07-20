@@ -2,10 +2,11 @@ const path = require('path');
 const fs = require('fs');
 
 class Ticket {
-    constructor(numero, horario, horario2, matricula, escritorio) {
+    constructor(numero, horario, horario2, /*horario3,*/ matricula, escritorio) {
         this.numero = numero;
         this.horario = horario;
         this.horarioFinal = horario2;
+        //this.finalizadoBox = horario3;
         this.matricula = matricula; //esto sería DNI o Matricula
         this.escritorio = escritorio;
     }
@@ -58,7 +59,7 @@ class TicketControl {
         this.ultimo += 1;
         const horarioNuevo = new Date().toLocaleTimeString('es-ES');
         this.horario = horarioNuevo;
-        const ticket = new Ticket(this.ultimo, this.horario, this.horarioFinal, matricula);
+        const ticket = new Ticket(this.ultimo, this.horario, this.horarioFinal, /*this.finalizadoBox*/ matricula);
         this.tickets.push(ticket);
         this.guardarDB();
         return `Ticket ${ticket.numero} - DNI-MATRICULA: ${ticket.matricula}`;
@@ -78,6 +79,21 @@ class TicketControl {
         this.guardarDB();
         return ticket;
     }
+
+    /*finalizarBox() {
+        if (this.tickets.length === 0) return null;
+        const ticket = this.tickets.shift();
+        const horarioFinal2 = new Date().toLocaleTimeString('es-ES');
+        ticket.horario3 = horarioFinal2;
+        this.ultimos4.unshift(ticket);
+        this.totalHistorico.push(ticket);
+        if (this.ultimos4.length > 4) {
+            this.ultimos4.splice(-1, 1);
+        }
+        this.guardarDB();
+        return ticket;
+
+    }*/
 
     //nueva funcion al txt
     backupDB() {

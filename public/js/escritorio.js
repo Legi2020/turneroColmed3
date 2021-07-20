@@ -1,10 +1,11 @@
 // Referencias del HTML
 const lblEscritorio = document.querySelector('h1');
-const btnSiguiente = document.querySelector('button');
+const btnSiguiente = document.getElementById('atender');
 const lblTicket = document.querySelector('small');
 const divAlerta = document.querySelector('.alert');
 const lblPendientes = document.querySelector('#lblPendientes');
 const labelNoTickets = document.querySelector('.alert-info');
+const finalizarTurno = document.getElementById('finalizarTurno');
 
 const searchParams = new URLSearchParams(window.location.search);
 if (!searchParams.has('escritorio')) {
@@ -36,14 +37,10 @@ socket.on('tickets-pendientes', (pendientes) => {
         lblPendientes.style.display = 'none';
     } else {
         audio.play();
-        window.alert('Hay una persona en espera');
-        setTimeout(function(){
-            audio.play();
-        },2000);
+        //window.alert('Hay una persona en espera');
         labelNoTickets.style.display = 'none';
         lblPendientes.style.display = '';
         lblPendientes.innerText = pendientes;
-        audio.play();
     }
     lblPendientes.innerText = pendientes;
 })
@@ -58,3 +55,9 @@ btnSiguiente.addEventListener('click', () => {
     });
 
 });
+
+/*finalizarTurno.addEventListener('click', () => {
+    socket.emit('finalizar-Box');
+    console.log('ok logrado')
+})*/
+

@@ -7,14 +7,28 @@ document.addEventListener('DOMContentLoaded', obtenerArray);
               return respuesta.json();
           })
           .then(resultado => {
-              //console.log(resultado);
+              console.log(resultado);
+              pendientesHTML(resultado);
               mostrarHTML(resultado);
           })
           .catch(error => {
               return error;
           })
   }
-  
+
+  function pendientesHTML({hoy, tickets }) {
+    const contenido = document.getElementById('data0');
+    let body = '';
+
+    tickets.forEach(data => {
+        const { numero, matricula, horario } = data;
+        
+
+        body += `<tr><td>${hoy}</td><td>${numero}</td><td>${horario}</td><td>${matricula}</td></tr>`
+
+        contenido.innerHTML = body;
+    });
+  }
 
   function mostrarHTML({hoy, totalHistorico }) {
     const contenido = document.getElementById('data');
