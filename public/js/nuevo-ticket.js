@@ -28,3 +28,17 @@ btnCrear.addEventListener('click', () => {
     }
 
 });
+
+nuevoDato.addEventListener("keyup", function(event) {
+    if (event.keyCode === 13) {
+     event.preventDefault();
+     if (nuevoDato.value == "") {
+       alert("No puede estar el campo vacio");
+     } else {
+       socket.emit("siguiente-ticket", nuevoDato.value, (ticket) => {
+         lblNuevoTicket.innerText = ticket;
+         nuevoDato.value = ticket;
+       });
+     }
+    }
+});
