@@ -2,12 +2,14 @@ const path = require('path');
 const fs = require('fs');
 
 class Ticket {
-    constructor(numero, horario, horario2, /*horario3,*/ matricula, escritorio) {
+    constructor(numero, horario, horario2, nombre, apellido, dni, matricula, escritorio) {
         this.numero = numero;
         this.horario = horario;
         this.horarioFinal = horario2;
-        //this.finalizadoBox = horario3;
-        this.matricula = matricula; //esto sería DNI o Matricula
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.dni = dni;
+        this.matricula = matricula;
         this.escritorio = escritorio;
     }
 }
@@ -20,6 +22,7 @@ class TicketControl {
         this.ultimo = 0;
         this.hoy = new Date().toLocaleDateString();
         this.tickets = [];
+        this.ticketsTurno = [];
         this.ultimos4 = [];
         this.totalHistorico = [];
         this.init();
@@ -30,15 +33,17 @@ class TicketControl {
             ultimo: this.ultimo,
             hoy: this.hoy,
             tickets: this.tickets,
+            ticketsTurno: this.ticketsTurno,
             ultimos4: this.ultimos4,
             totalHistorico: this.totalHistorico
         }
     }
 
     init() {
-        const { hoy, tickets, ultimo, ultimos4, totalHistorico } = require('../db/data.json');
+        const { hoy, tickets, ticketsTurno, ultimo, ultimos4, totalHistorico } = require('../db/data.json');
         if (hoy === this.hoy) {
             this.tickets = tickets;
+            this.ticketsTurno = ticketsTurno;
             this.ultimo = ultimo;
             this.ultimos4 = ultimos4;
             this.totalHistorico = totalHistorico;
@@ -55,14 +60,24 @@ class TicketControl {
         fs.writeFileSync(dbPath, JSON.stringify(this.toJson));
     }
 
-    siguiente(matricula) {
+    siguiente(nombre, apellido, dni, matricula) {
         this.ultimo += 1;
         const horarioNuevo = new Date().toLocaleTimeString('es-ES');
         this.horario = horarioNuevo;
-        const ticket = new Ticket(this.ultimo, this.horario, this.horarioFinal, /*this.finalizadoBox*/ matricula);
+        const ticket = new Ticket(this.ultimo, this.horario, this.horarioFinal, nombre, apellido, dni, matricula);
         this.tickets.push(ticket);
         this.guardarDB();
-        return `Ticket ${ticket.numero} - DNI-MATRICULA: ${ticket.matricula}`;
+        return `Ticket ${ticket.numero}`;
+    }
+
+    siguiente2(nombre, apellido, dni, matricula) { //Función para los que tengan turno
+        this.ultimo += 1;
+        const horarioNuevo = new Date().toLocaleTimeString('es-ES');
+        this.horario = horarioNuevo;
+        const ticket = new Ticket(this.ultimo, this.horario, this.horarioFinal, nombre, apellido, dni, matricula);
+        this.ticketsTurno.push(ticket);
+        this.guardarDB();
+        return `Ticket ${ticket.numero}`;
     }
 
     atenderTicket(escritorio) {
@@ -80,11 +95,12 @@ class TicketControl {
         return ticket;
     }
 
-    /*finalizarBox() {
+    atenderTicketTurno(escritorio) { //Función atender ticket que tienen turno
         if (this.tickets.length === 0) return null;
-        const ticket = this.tickets.shift();
-        const horarioFinal2 = new Date().toLocaleTimeString('es-ES');
-        ticket.horario3 = horarioFinal2;
+        const ticket = this.ticketsTurno.shift();
+        ticket.escritorio = escritorio;
+        const horarioFinal = new Date().toLocaleTimeString('es-ES');
+        ticket.horario2 = horarioFinal;
         this.ultimos4.unshift(ticket);
         this.totalHistorico.push(ticket);
         if (this.ultimos4.length > 4) {
@@ -92,10 +108,18 @@ class TicketControl {
         }
         this.guardarDB();
         return ticket;
+    }
 
+    /*atenderNumero(escritorio) {
+        if (this.tickets.length === 0) return null;
+        ticket.escritorio = escritorio;
+        const ticket = this.tickets.find(element => element.numero == valor);
+        const horarioFinal = new Date().toLocaleTimeString('es-ES');
+        ticket.horario2 = horarioFinal;
+        this.tickets = this.tickets.filter(element => element.numero != valor);
+        return ticket;
     }*/
 
-    //nueva funcion al txt
     backupDB() {
         const data = {
             hoy: this.hoy,

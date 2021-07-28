@@ -1,7 +1,10 @@
 // Referencias del HTML
 const lblNuevoTicket = document.querySelector('#lblNuevoTicket');
 const btnCrear = document.querySelector('button');
-const nuevoDato = document.getElementById('lblNuevoDato');
+const datoNombre = document.getElementById('lblNombre');
+const datoApellido = document.getElementById('lblApellido');
+const datoDNI = document.getElementById('lblDNI');
+const datoMatricula = document.getElementById('lblMatricula');
 
 const socket = io();
 
@@ -18,13 +21,19 @@ socket.on('ultimo-ticket', ultimo => {
 });
 
 btnCrear.addEventListener('click', () => {
-    if(nuevoDato.value == "" /*|| nuevoDato.value.length < 2*/) { //Consultar en futuro por un minimo de caracteres.
+    if(datoNombre.value == "" || datoApellido.value == "" || datoDNI.value == "") { //Consultar en futuro por un minimo de caracteres.
         alert('No puede estar el campo vacio');
     }else {
-        socket.emit('siguiente-ticket', (nuevoDato.value), (ticket) => {
+        socket.emit('siguiente-ticket', (datoNombre.value), (datoApellido.value), (datoDNI.value), (datoMatricula.value), (ticket) => {
             lblNuevoTicket.innerText = ticket;
-            nuevoDato.value = ticket;
+            datoNombre.value = ticket;
+            datoApellido.value = ticket;
+            datoDNI.value = ticket;
+            datoMatricula.value = ticket;
         }); 
     }
+    window.setTimeout(function () {
+        window.location.reload();
+        }, 1000);
 
 });

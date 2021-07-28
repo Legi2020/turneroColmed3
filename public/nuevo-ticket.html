@@ -7,7 +7,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="./css/keyboard.css">
     <title>Nuevo Ticket</title>
-
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -24,26 +23,31 @@
         </tr>
         <tr>
             <td>
-                <H4 style="font-size: 300%; font-family:Copperplate,fantasy;">Ingrese Matricula o DNI</H4>
-                    <input class="use-keyboard-input" style="box-sizing: 30px; padding: 30px; font-size:35px; width: auto;" type="number" value="Ingrese Matricula o DNI" id="lblNuevoDato" required></input>
-                    <!-- <input class="form-control input-sm" style="box-sizing: 30px; padding: 30px; font-size:35px; width: auto;" type="number" value="Ingrese Matricula o DNI" id="lblNuevoDato"> -->
-                </div>
-                </span>
+                <H4 style="font-size: 130%; font-family:Copperplate,fantasy;">Inserte Nombre:</H4>
+                <input class="use-keyboard-input" style="box-sizing: 23px; padding: 23px; font-size:24px; width: auto;" type="text" value="" id="lblNombre" required></input>
+                <H4 style="font-size: 130%; font-family:Copperplate,fantasy;">Inserte Apellido:</H4>
+                <input class="use-keyboard-input" style="box-sizing: 23px; padding: 23px; font-size:24px; width: auto;" type="text" value="" id="lblApellido" required></input>
+                <H4 style="font-size: 130%; font-family:Copperplate,fantasy;">Inserte DNI:</H4>
+                <input class="use-keyboard-input" style="box-sizing: 23px; padding: 23px; font-size:24px; width: auto;" type="number" value="" id="lblDNI" required></input>
+                <H4 style="font-size: 130%; font-family:Copperplate,fantasy;">Inserte Matricula:</H4>
+                <input class="use-keyboard-input" style="box-sizing: 23px; padding: 23px; font-size:24px; width: auto;" type="number" value="" id="lblMatricula"></input>
             </td>
         </tr>
         <tr>
             <td>
+                <br>
                 <button class="btn btn-success btn-lg">
                     Generar nuevo Turno
                 </button>
             </td>
         </tr>
     </table>
+    <br>
+
+</body>
 
     <!-- <script src="./js/keyboard.js"></script> Se anulo el Keyboard-->
     <script src="./socket.io/socket.io.js"></script>
-    <script src="./js/nuevo-ticket.js"></script>
-
-</body>
+    <script src="./js/nuevo-ticket.js"></script>    
 
 </html>

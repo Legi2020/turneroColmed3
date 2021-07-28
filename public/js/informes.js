@@ -21,10 +21,10 @@ document.addEventListener('DOMContentLoaded', obtenerArray);
     let body = '';
 
     tickets.forEach(data => {
-        const { numero, matricula, horario } = data;
+        const { numero, nombre, apellido, dni, matricula, horario } = data;
         
 
-        body += `<tr><td>${hoy}</td><td>${numero}</td><td>${horario}</td><td>${matricula}</td></tr>`
+        body += `<tr><td>${hoy}</td><td>${numero}</td><td>${horario}</td><td>${nombre}</td><td>${apellido}</td><td>${dni}</td><td>${matricula}</td></tr>`
 
         contenido.innerHTML = body;
     });
@@ -35,10 +35,10 @@ document.addEventListener('DOMContentLoaded', obtenerArray);
     let body = '';
 
     totalHistorico.forEach(data => {
-        const { numero, matricula, horario, escritorio, horario2 } = data;
+        const { numero, nombre, apellido, dni, matricula, horario, escritorio, horario2 } = data;
         
 
-        body += `<tr><td>${hoy}</td><td>${numero}</td><td>${matricula}</td><td>${escritorio}</td><td>${horario}</td><td>${horario2}</td></tr>`
+        body += `<tr><td>${hoy}</td><td>${numero}</td><td>${nombre}</td><td>${apellido}</td><td>${dni}</td><td>${matricula}</td><td>${escritorio}</td><td>${horario}</td><td>${horario2}</td></tr>`
 
         contenido.innerHTML = body;
     });
