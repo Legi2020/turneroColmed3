@@ -96,7 +96,7 @@ class TicketControl {
     }
 
     atenderTicketTurno(escritorio) { //Función atender ticket que tienen turno
-        if (this.tickets.length === 0) return null;
+        if (this.ticketsTurno.length === 0) return null;
         const ticket = this.ticketsTurno.shift();
         ticket.escritorio = escritorio;
         const horarioFinal = new Date().toLocaleTimeString('es-ES');
@@ -110,15 +110,6 @@ class TicketControl {
         return ticket;
     }
 
-    /*atenderNumero(escritorio) {
-        if (this.tickets.length === 0) return null;
-        ticket.escritorio = escritorio;
-        const ticket = this.tickets.find(element => element.numero == valor);
-        const horarioFinal = new Date().toLocaleTimeString('es-ES');
-        ticket.horario2 = horarioFinal;
-        this.tickets = this.tickets.filter(element => element.numero != valor);
-        return ticket;
-    }*/
 
     backupDB() {
         const data = {
@@ -147,6 +138,7 @@ class TicketControl {
         this.backupDB();
         this.ultimo = 0;
         this.tickets = [];
+        this.ticketsTurno = [];
         this.ultimos4 = [];
         this.totalHistorico = [];
         this.guardarDB();

@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', obtenerArray);
               console.log(resultado);
               pendientesHTML(resultado);
               mostrarHTML(resultado);
+              pendientesConTurno(resultado);
           })
           .catch(error => {
               return error;
@@ -21,6 +22,20 @@ document.addEventListener('DOMContentLoaded', obtenerArray);
     let body = '';
 
     tickets.forEach(data => {
+        const { numero, nombre, apellido, dni, matricula, horario } = data;
+        
+
+        body += `<tr><td>${hoy}</td><td>${numero}</td><td>${horario}</td><td>${nombre}</td><td>${apellido}</td><td>${dni}</td><td>${matricula}</td></tr>`
+
+        contenido.innerHTML = body;
+    });
+  }
+
+  function pendientesConTurno({hoy, ticketsTurno }) {
+    const contenido = document.getElementById('dataA');
+    let body = '';
+
+    ticketsTurno.forEach(data => {
         const { numero, nombre, apellido, dni, matricula, horario } = data;
         
 

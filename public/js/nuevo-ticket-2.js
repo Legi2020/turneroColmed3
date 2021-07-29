@@ -24,7 +24,7 @@ btnCrear.addEventListener('click', () => {
     if(datoNombre.value == "" || datoApellido.value == "" || datoDNI.value == "") { //Consultar en futuro por un minimo de caracteres.
         alert('No puede estar el campo vacio');
     }else {
-        socket.emit('siguiente-ticket', (datoNombre.value), (datoApellido.value), (datoDNI.value), (datoMatricula.value), (ticket) => {
+        socket.emit('siguiente-ticket-2', (datoNombre.value), (datoApellido.value), (datoDNI.value), (datoMatricula.value), (ticket) => {
             lblNuevoTicket.innerText = ticket;
             datoNombre.value = ticket;
             datoApellido.value = ticket;
