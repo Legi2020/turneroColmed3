@@ -27,12 +27,14 @@ const socket = io();
 
 socket.on('connect', () => {
     btnSiguiente.disabled = false;
+    btnSiguiente2.disabled = false;
 
 
 });
 
 socket.on('disconnect', () => {
     btnSiguiente.disabled = true;
+    btnSiguiente2.disabled = true;
 });
 
 
@@ -57,12 +59,12 @@ btnSiguiente.addEventListener('click', () => {
             lblTicket.innerText = 'Nadie';
             return divAlerta.style.display = '';
         }
-        lblTicket.innerText = `Turno: ${ticket.numero} con DNI-Matricula: ${ticket.matricula}` ;
+        lblTicket.innerText = `Turno: ${ticket.numero}, Apellido: ${ticket.apellido}, Nombre: ${ticket.nombre}, DNI: ${ticket.dni}, Matricula: ${ticket.matricula}` ;
     });
 
 });
 
-socket.on('tickets-pendientes-2', (pendientes) => {
+socket.on('ticket-pendientes-2', (pendientes) => {
     const audio = new Audio('./audio/alert2.mp3');
     if (pendientes === 0) {
         labelNoTickets2.style.display = '';
@@ -83,7 +85,7 @@ btnSiguiente2.addEventListener('click', () => {
             lblTicket2.innerText = 'Nadie';
             return divAlerta2.style.display = '';
         }
-        lblTicket2.innerText = `Turno: ${ticket.numero} con DNI-Matricula: ${ticket.matricula}` ;
+        lblTicket2.innerText = `Turno: ${ticket.numero}, Apellido: ${ticket.apellido}, Nombre: ${ticket.nombre}, DNI: ${ticket.dni}, Matricula: ${ticket.matricula}` ;
     });
 
 });

@@ -37,7 +37,8 @@ btnCrear.addEventListener('click', () => {
             title: '¡Turno logrado con Éxito!',
             text: `Por favor recuerde su ${lblNuevoTicket.innerText}`,
             icon: 'success',
-            confirmButtonText: 'Cerrar'
+            confirmButtonText: 'Cerrar',
+            confirmButtonColor: '#075e33'
           }).then( () => {
             window.location.assign("/seleccion.html");
           });

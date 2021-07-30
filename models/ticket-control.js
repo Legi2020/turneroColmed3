@@ -67,7 +67,7 @@ class TicketControl {
         const ticket = new Ticket(this.ultimo, this.horario, this.horarioFinal, nombre, apellido, dni, matricula);
         this.tickets.push(ticket);
         this.guardarDB();
-        return `Ticket ${ticket.numero}`;
+        return `Turno ${ticket.numero}`;
     }
 
     siguiente2(nombre, apellido, dni, matricula) { //Función para los que tengan turno
@@ -77,7 +77,7 @@ class TicketControl {
         const ticket = new Ticket(this.ultimo, this.horario, this.horarioFinal, nombre, apellido, dni, matricula);
         this.ticketsTurno.push(ticket);
         this.guardarDB();
-        return `Ticket ${ticket.numero}`;
+        return `Turno ${ticket.numero}`;
     }
 
     atenderTicket(escritorio) {

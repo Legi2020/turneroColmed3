@@ -18,27 +18,32 @@ table {
 
 .ticket-actual-numero {
     font-family: Copperplate,fantasy;
-    font-size: 100px;
+    font-size: 80px;
+    text-transform: uppercase;
 }
 
 .ticket-actual-datos {
     font-family: Copperplate,fantasy;
-    font-size: 70px;
+    font-size: 60px;
+    text-transform: uppercase;
 }
 
 .ticket-actual-escritorio {
     font-family: Copperplate,fantasy;
-    font-size: 100px;
+    font-size: 70px;
+    text-transform: uppercase;
 }
 
 .ticket-secundario {
     font-family: Copperplate,fantasy;
-    font-size: 30px;
+    font-size: 35px;
+    text-transform: uppercase;
 }
 
 .ticket-secundario-escritorio {
     font-family: Copperplate,fantasy;
     font-size: 30px;
+    text-transform: uppercase;
 }
 
 /* Nuevo-ticket */
@@ -46,6 +51,7 @@ table {
 #lblNuevoTicket {
     font-family: Copperplate,fantasy;
     font-size: 40px;
+    text-transform: uppercase;
 }
 
 #lblNuevoDato {
@@ -54,7 +60,7 @@ table {
 }
 
 .contenido {
-    max-width: 1200px;
+    max-width: 1100px;
     margin: 5rem auto 0 auto;
     color: white;
     font-size: 3rem;

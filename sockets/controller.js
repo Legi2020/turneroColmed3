@@ -31,7 +31,7 @@ const socketController = (socket) => {
         socket.broadcast.emit('estado-actual', ticketControl.ultimos4);
         socket.emit('tickets-pendientes', ticketControl.tickets.length);
         socket.broadcast.emit('tickets-pendientes', ticketControl.tickets.length);
-        if (!ticket) return callback({ ok: false, msg: 'No hay tickets pendientes' });
+        if (!ticket) return callback({ ok: false, msg: 'No hay turnos pendientes' });
         return callback({ ok: true, ticket });
     });
 
@@ -41,7 +41,7 @@ const socketController = (socket) => {
         socket.broadcast.emit('estado-actual', ticketControl.ultimos4);
         socket.emit('ticket-pendientes-2', ticketControl.ticketsTurno.length);
         socket.broadcast.emit('ticket-pendientes-2', ticketControl.ticketsTurno.length);
-        if (!ticket) return callback({ ok: false, msg: 'No hay tickets pendientes' });
+        if (!ticket) return callback({ ok: false, msg: 'No hay turnos pendientes' });
         return callback({ ok: true, ticket });
     });
 
