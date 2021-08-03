@@ -22,7 +22,13 @@ socket.on('ultimo-ticket', ultimo => {
 
 btnCrear.addEventListener('click', () => {
     if(datoNombre.value == "" || datoApellido.value == "" || datoDNI.value == "") { //Consultar en futuro por un minimo de caracteres.
-        alert('No puede estar el campo vacio');
+        Swal.fire({
+            title: 'No puede estar el campo vacio',
+            text: `Presione cerrar para re-intentar.`,
+            icon: 'warning',
+            confirmButtonText: 'Cerrar',
+            confirmButtonColor: '#075e33'
+          });
     }else {
         socket.emit('siguiente-ticket-2', (datoNombre.value), (datoApellido.value), (datoDNI.value), (datoMatricula.value), (ticket) => {
             lblNuevoTicket.innerText = ticket;
@@ -30,18 +36,18 @@ btnCrear.addEventListener('click', () => {
             datoApellido.value = ticket;
             datoDNI.value = ticket;
             datoMatricula.value = ticket;
-        }); 
+        });
+        window.setTimeout(function () {
+            Swal.fire({
+                title: '¡Turno logrado con Éxito!',
+                text: `Por favor recuerde su ${lblNuevoTicket.innerText}`,
+                icon: 'success',
+                confirmButtonText: 'Cerrar',
+                confirmButtonColor: '#075e33'
+              }).then( () => {
+                window.location.assign("/seleccion.html");
+              });
+            }, 300);
     };
-    window.setTimeout(function () {
-        Swal.fire({
-            title: '¡Turno logrado con Éxito!',
-            text: `Por favor recuerde su ${lblNuevoTicket.innerText}`,
-            icon: 'success',
-            confirmButtonText: 'Cerrar',
-            confirmButtonColor: '#075e33'
-          }).then( () => {
-            window.location.assign("/seleccion.html");
-          });
-        }, 300);
 
 });

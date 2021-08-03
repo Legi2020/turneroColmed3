@@ -2,7 +2,9 @@ html,
 body {
     height: 100%;
     width: 100%;
-    background-color: #a0a0a0cb;
+    background: #dde0e2; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to bottom, #dfe1e2, #344658); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to bottom, #e1e4e6, #324355); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     color: rgb(20, 20, 20);
 }
 
@@ -52,6 +54,8 @@ table {
     font-family: Copperplate,fantasy;
     font-size: 40px;
     text-transform: uppercase;
+    position: absolute;
+    left: 50%;
 }
 
 #lblNuevoDato {

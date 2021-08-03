@@ -12,38 +12,76 @@
 </head>
 
 <body>
-    <table>
-        <tr>
-            <td>
-                <span id="lblNuevoTicket">
-                    Cargando...
-                </span>
-                <hr>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <H4 style="font-size: 130%; font-family:Copperplate,fantasy;">Inserte Nombre:</H4>
-                <input class="use-keyboard-input" style="box-sizing: 23px; padding: 23px; font-size:24px; width: auto;" type="text" value="" id="lblNombre" required></input>
-                <H4 style="font-size: 130%; font-family:Copperplate,fantasy;">Inserte Apellido:</H4>
-                <input class="use-keyboard-input" style="box-sizing: 23px; padding: 23px; font-size:24px; width: auto;" type="text" value="" id="lblApellido" required></input>
-                <H4 style="font-size: 130%; font-family:Copperplate,fantasy;">Inserte DNI:</H4>
-                <input class="use-keyboard-input" style="box-sizing: 23px; padding: 23px; font-size:24px; width: auto;" type="number" value="" id="lblDNI" required></input>
-                <H4 style="font-size: 130%; font-family:Copperplate,fantasy;">Inserte Matricula:</H4>
-                <input class="use-keyboard-input" style="box-sizing: 23px; padding: 23px; font-size:24px; width: auto;" type="number" value="" id="lblMatricula"></input>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <br>
-                <button class="btn btn-success btn-lg" id="boton0">
-                    Generar nuevo Turno
+    <div class="container">
+        <nav class="navbar fixed-top navbar-light bg-light" style="text-align: center;">
+            <img src="./img/distrito3chico.png" class="rounded float-left" alt="logo">
+            <span id="lblNuevoTicket">
+                Cargando...
+            </span>
+        </nav>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <hr>
+        <br>
+        <br>
+        <br>
+        <br>
+        <div class="row justify-content-center">
+            <div class="col-md-auto">
+                <h3>Nombre:</h3>
+            </div>
+            <!-- use-keyboard-input <- es para utilizar el keyboard cambiar clase-->
+            <div class="col-md-auto">
+                <input class="form-control" style="box-sizing: 23px; padding: 23px; font-size:23px; width: auto; border-radius: 10px;"
+                    type="text" value="" id="lblNombre" required></input>
+            </div>
+            <div class="col-4">
+            </div>
+        </div>
+        <br>
+        <div class="row justify-content-center">
+            <div class="col-md-auto">
+                <h3>Apellido:</h3>
+            </div>
+            <div class="col-md-auto">
+                <input class="form-control" style="box-sizing: 20px; padding: 20px; font-size:24px; width: auto; border-radius: 10px;"
+                    type="text" value="" id="lblApellido" required></input>
+            </div>
+            <div class="col-4">
+                <button class="btn btn-success btn-lg" style="font-size: 24px;" id="boton1">
+                    GENERAR Y FINALIZAR
                 </button>
-            </td>
-        </tr>
-    </table>
+            </div>
+        </div>
+        <br>
+        <div class="row justify-content-center">
+            <div class="col-md-auto">
+                <h3 style="font-size: 21px;">Documento:</h3>  
+            </div>
+            <div class="col-md-auto">
+                <input class="form-control" style="box-sizing: 23px; padding: 23px; font-size:23px; width: auto; border-radius: 10px;"
+                    type="number" value="" id="lblDNI" required></input>
+            </div>
+            <div class="col-4">
+            </div>
+        </div>
+        <br>
+        <div class="row justify-content-center">
+            <div class="col-md-auto">
+                <h3 style="font-size: 25px;">Matrícula:</h3>
+            </div>
+            <div class="col-md-auto">
+                <input class="form-control" style="box-sizing: 23px; padding: 23px; font-size:23px; width: auto; border-radius: 10px;"
+                    type="number" value="" id="lblMatricula"></input>
+            </div>
+            <div class="col-4">
+            </div>
+        </div>
+    </div>
     <br>
-
 </body>
 
     <!-- <script src="./js/keyboard.js"></script> Se anulo el Keyboard-->
