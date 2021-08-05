@@ -1,5 +1,5 @@
 // Referencias del HTML
-const lblEscritorio = document.querySelector('h1');
+const lblEscritorio = document.querySelector('h2');
 const btnSiguiente = document.getElementById('atender');
 const lblTicket = document.querySelector('small');
 const divAlerta = document.querySelector('.alert');

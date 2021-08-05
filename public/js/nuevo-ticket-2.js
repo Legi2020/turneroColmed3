@@ -30,24 +30,28 @@ btnCrear.addEventListener('click', () => {
             confirmButtonColor: '#075e33'
           });
     }else {
-        socket.emit('siguiente-ticket-2', (datoNombre.value), (datoApellido.value), (datoDNI.value), (datoMatricula.value), (ticket) => {
+        socket.emit('siguiente-ticket', (datoNombre.value), (datoApellido.value), (datoDNI.value), (datoMatricula.value), (ticket) => {
             lblNuevoTicket.innerText = ticket;
             datoNombre.value = ticket;
             datoApellido.value = ticket;
             datoDNI.value = ticket;
             datoMatricula.value = ticket;
-        });
-        window.setTimeout(function () {
-            Swal.fire({
-                title: '¡Turno logrado con Éxito!',
-                text: `Por favor recuerde su ${lblNuevoTicket.innerText}`,
-                icon: 'success',
-                confirmButtonText: 'Cerrar',
-                confirmButtonColor: '#075e33'
-              }).then( () => {
-                window.location.assign("/seleccion.html");
-              });
-            }, 300);
+        }); 
     };
+    window.setTimeout(function () {
+        Swal.fire({
+            title: '¡Turno logrado con Éxito!',
+            text: `Recuerde su ${lblNuevoTicket.innerText}, tome asiento y espere a ser atendido`,
+            icon: 'success',
+            confirmButtonText: 'Cerrar',
+            confirmButtonColor: '#075e33',
+            timer:  10000
+          }, () => {
+            window.location.assign("/seleccion.html");
+          }).then( () => {
+            window.location.assign("/seleccion.html");
+          });
+        }, 300);
+
 
 });

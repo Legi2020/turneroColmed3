@@ -41,10 +41,13 @@ btnCrear.addEventListener('click', () => {
     window.setTimeout(function () {
         Swal.fire({
             title: '¡Turno logrado con Éxito!',
-            text: `Por favor recuerde su ${lblNuevoTicket.innerText}`,
+            text: `Recuerde su ${lblNuevoTicket.innerText}, tome asiento y espere a ser atendido`,
             icon: 'success',
             confirmButtonText: 'Cerrar',
-            confirmButtonColor: '#075e33'
+            confirmButtonColor: '#075e33',
+            timer:  10000
+          }, () => {
+            window.location.assign("/seleccion.html");
           }).then( () => {
             window.location.assign("/seleccion.html");
           });
