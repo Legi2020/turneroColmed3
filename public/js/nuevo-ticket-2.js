@@ -30,7 +30,7 @@ btnCrear.addEventListener('click', () => {
             confirmButtonColor: '#075e33'
           });
     }else {
-        socket.emit('siguiente-ticket', (datoNombre.value), (datoApellido.value), (datoDNI.value), (datoMatricula.value), (ticket) => {
+        socket.emit('siguiente-ticket-2', (datoNombre.value), (datoApellido.value), (datoDNI.value), (datoMatricula.value), (ticket) => {
             lblNuevoTicket.innerText = ticket;
             datoNombre.value = ticket;
             datoApellido.value = ticket;
