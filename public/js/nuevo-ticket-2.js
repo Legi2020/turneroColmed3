@@ -37,7 +37,6 @@ btnCrear.addEventListener('click', () => {
             datoDNI.value = ticket;
             datoMatricula.value = ticket;
         }); 
-    };
     window.setTimeout(function () {
         Swal.fire({
             title: '¡Turno logrado con Éxito!',
@@ -52,6 +51,6 @@ btnCrear.addEventListener('click', () => {
             window.location.assign("/seleccion.html");
           });
         }, 300);
-
+    };
 
 });
