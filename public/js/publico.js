@@ -25,9 +25,8 @@ socket.on('estado-actual', payload => {
     const [ticket1, ticket2, ticket3, ticket4] = payload;
 
     if (ticket1) {
-        lblTicket1.innerText = `Turno: ${ticket1.numero}`;
-        lblDatos1.innerText = `Datos: ${ticket1.apellido}, ${ticket1.nombre} `;
         lblEscritorio1.innerText = `BOX: ${ticket1.escritorio}`;
+        lblDatos1.innerText = `${ticket1.apellido}, ${ticket1.nombre} `;
     }
 
     if (ticket2) {
